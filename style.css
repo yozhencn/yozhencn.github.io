@@ -1,0 +1,41 @@
+
+body {
+  background-color: #e8f3f3;
+  color: #333;
+}
+header, footer {
+  background-color: #81C0C0;
+  color: white;
+  padding: 1rem 0;
+}
+
+h1, h2, h3 {
+  color: #5c8a8a;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .nav-link {
+  color: #5c8a8a;
+}
+
+.card {
+  border: 1px solid #81C0C0;
+}
+
+.card-title {
+  color: #4d7373;
+}
+
+.card-text {
+  color: #5c8a8a;
+}
+
+button {
+  background-color: #81C0C0;
+  color: white;
+  border: none;
+}
+
+button:hover {
+  background-color: #6ba7a7;
+}

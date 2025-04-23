@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人作品集</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">作品集</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#about">關於我</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">作品集</a>
+            </li> <li class="nav-item"><a class="nav-link" href="models.html">模型</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">聯絡方式</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container mt-3 text-center">
+    <img src="attached_assets/證件照.jpg" alt="Personal Photo" class="img-fluid rounded-circle" style="max-width: 200px; width: 200px; height: 200px; object-fit: cover;">
+  </div>
+
+  <main class="container mt-5">
+    <section id="about" class="section py-5">
+      <h1>關於我</h1>
+      <p>
+        陳又溱<br>
+        國立台灣科技大學生<br>
+        <a href="https://reurl.cc/W0Rqp9" target="_blank">My Instagram</a><br>
+
+        
+        最高學歷: 國立台灣科技大學-企業管理系大三<br>
+        興趣: 彈吉他、唱歌、聽音樂<br>
+        個性特點: 負責任、老實、細心<br>
+        MBTI:ISFJ<br>
+      </p>
+    </section>
+
+    <section id="projects" class="section py-5">
+      <h2>作品集</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="card-title">作品 1</h3>
+              <img src="attached_assets/point.png" alt="Hand Detection Project" class="img-fluid mb-3">
+              <p class="card-text">
+                Hand Landmarks Detection<br>
+                2025年 03月 12日(週三)<br>
+                人工智慧應用課程製作<br><br>
+
+                <strong>作品說明</strong><br>
+              </p>
+              <p class="card-text">
+                使用者可透過特定手指與螢幕上隨機出現的互動框進行觸碰。當手指接觸指定區域時，系統會自動加總分數（Score +1），並即時變更框框的位置與顏色。此互動機制也支援辨識不同手指的觸碰，提升操作彈性與遊戲化設計的可能性。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="card-title">作品 2</h3>
+               <img src="attached_assets/watch.png" alt="物件識別" class="img-fluid mb-3">
+            
+              <p class="card-text">Object detection</p>
+              <p class="card-text">
+                <strong>作品說明</strong><br>
+                運用人工智慧中的物件識別技術，透過深度學習模型自動辨識影像中多個物件的類型與位置。系統能即時分析攝影機畫面，具備高度準確性與反應速度。
+              </p>
+              <p class="card-text">
+                我訓練了三種物品，水壺、手機、手錶，並且在偵測後在畫面顯示出物件名稱
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="card-title">試試有趣的物件辨識!</h3>
+
+              <img src="attached_assets/phone.jpg" alt="物件識別" class="img-fluid mb-3">
+              <img src="attached_assets/water.jpg" alt="物件識別" class="img-fluid mb-3">
+              <p class="card-text">
+                以上兩張照片，手機與水壺是這次機器學習的物件
+              </p>
+              
+              <p class="card-text"><a href="models.html" class="btn btn-primary">查看模型展示</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section py-5">
+      <h2>聯絡方式</h2>
+      <p>
+        電話: 0966634661<br>
+        班級: 四企管三<br>
+        E-mail: B11108032@mail.ntust.edu.tw; youzhenchen0801@gmail.com
+      </p>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 陳又溱</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
