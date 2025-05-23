@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 藥品辨識專案</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      font-weight: 500;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #4ecdc4;
+      margin: 10px auto 0;
+    }
+    .img-preview {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    details {
+      position: relative;
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+    details summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+    details pre {
+      margin: 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 0.875rem;
+      padding: 0.4rem 0.75rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #81C0C0;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .copy-btn:hover {
+      background-color: #6ba7a7;
+    }
+    .highlight-box {
+      background-color: #f1f9f9;
+      border-left: 6px solid #4ecdc4;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+    }
+    .highlight-box h5 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #145858;
+      margin-bottom: 0.5rem;
+    }
+    .highlight-box p {
+      margin-bottom: 0.3rem;
+    }
+    .btn-soft {
+      background-color: #a7dcd9 !important;
+      border-color: #a7dcd9 !important;
+    }
+    .btn-soft:hover {
+      background-color: #91ccc8 !important;
+      border-color: #91ccc8 !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-light py-4 border-bottom">
+    <div class="container text-center">
+      <h1 class="display-5 fw-bold">💊📸 AI 藥品辨識小幫手</h1>
+      <p class="lead text-muted">辨識藥品種類，幫助長者安心服藥</p>
+    </div>
+  </header>
+
+  <main class="container mt-5">
+    <section class="mb-5">
+      <h2 class="section-title">📽️ DEMO 影片</h2>
+      <div class="ratio ratio-16x9 mb-5">
+        <iframe 
+          src="https://www.youtube.com/embed/E1H7a6iEC6A?si=C1c4NO__U7BJ9dDw" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="section-title">📖 專案簡介</h2>
+
+      <div class="highlight-box">
+        <h5>👋 初衷與動機</h5>
+        <p>大家好，我是台科大企業管理系大三的學生陳又溱。<br>
+        本專案為人工智慧應用課程的期末成果，主題是「藥品識別」，希望透過 AI 技術協助長者提升用藥安全。</p>
+      </div>
+
+      <div class="highlight-box">
+        <h5>📊 問題背景</h5>
+        <p>根據調查，約三成 65 歲以上長者每天服用五種以上的藥品。</p>
+        <p>隨著年齡增長，記憶力退化或失智症風險上升，使得長者更容易混淆藥品種類與劑量。</p>
+        <p>本作品目標是透過 <strong>Teachable Machine</strong> 訓練 AI 影像辨識模型，幫助辨識藥品種類與功能。</p>
+      </div>
+
+      <div class="highlight-box">
+        <h5>📷 操作流程</h5>
+        <p>開啟應用程式，將相機對準藥品本體或包裝，即可辨識藥名並顯示分類色標。</p>
+        <p>若辨識失敗，只需調整角度與光線即可。</p>
+      </div>
+
+      <div class="highlight-box">
+        <h5>🎨 顏色標示分類</h5>
+        <p>🔴 紅色代表急救或心血管藥物</p>
+        <p>🟢 綠色為慢性病常用藥</p>
+        <p>🟡 黃色表示維生素／保健品</p>
+        <p>🟣 紫色為精神科藥物等</p>
+      </div>
+
+      <div class="highlight-box">
+        <h5>🚀 未來擴展</h5>
+        <p>語音播報、異常提醒通知、藥品存量監控、與醫院處方整合，以及更友善的互動介面等功能。</p>
+      </div>
+
+      <p class="text-end fst-italic">資料來源：衛福部健保年報、失智症流行病學調查</p>
+    </section>
+
+    <!-- 🔗 兩顆按鈕：PDF & PPT -->
+    <div class="row text-center mb-4">
+      <div class="col-md-6 mb-2">
+        <a href="pdf/B11108032_Drug_Identification.pdf" target="_blank" class="btn btn-teal btn-soft w-100 py-3 fw-bold">查看報告(PDF)</a>
+      </div>
+      <div class="col-md-6 mb-2">
+        <a href="https://docs.google.com/presentation/d/1WF9FDNxSmRaklwMCNkvjWnMTQ5YKmV9L/edit?usp=sharing" target="_blank" class="btn btn-teal btn-soft w-100 py-3 fw-bold">查看簡報(PPTX)</a>
+      </div>
+    </div>
+
+    <section class="mb-5">
+      <h2 class="section-title">💻 程式碼展示</h2>
+      <details>
+        <summary>▶️ 藥品影像辨識主程式</summary>
+        <button class="copy-btn" onclick="copyCode(this)">複製程式碼</button>
+        <pre><code>import tensorflow as tf
+import cv2
+import numpy as np
+
+model = tf.keras.models.load_model('models/keras_model.h5', compile=False)
+data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+
+cap = cv2.VideoCapture(0)
+while cap.isOpened():
+    success, image = cap.read()
+    img = cv2.resize(image , (224, 224))
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    image = cv2.flip(image, 1)
+    image_array = np.asarray(img)
+    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+    data[0] = normalized_image_array
+    prediction = model.predict(data)
+    a,b,c,d,e = prediction[0]
+    if a>0.5:
+        print('stomach medicine ')
+        cv2.putText(image, 'stomach medicine', (30, 120), 1, 3, (0, 255, 0), 10, 1)
+    if b>0.5:
+        print('pain killing ')
+        cv2.putText(image, 'pain killing ', (130, 120), 1, 3, (0, 255, 0), 10,1)
+    if c>0.5:
+        print('EVE')
+        cv2.putText(image, 'EVE', (230, 120),1, 4, (0, 255, 0), 9, 1)
+    if d>0.5:
+        print('Anti-allergic Agents')
+        cv2.putText(image, 'Anti-allergic Agents', (30, 120),1, 3, (0,0,255), 10, 1)
+    cv2.imshow('Drug Identification', image)
+    if cv2.waitKey(500) & 0xFF == 27:
+        break
+cap.release()
+cv2.destroyAllWindows()</code></pre>
+      </details>
+    </section>
+
+    <div class="text-center mb-5">
+      <a href="index.html#projects" class="btn btn-teal me-2">← 返回作品集</a>
+      <a href="index.html" class="btn btn-teal">← 返回首頁</a>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 陳又溱 - AI 藥品辨識專案展示</p>
+  </footer>
+
+  <script>
+    function copyCode(button) {
+      const code = button.nextElementSibling.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        button.innerText = "✅ 已複製";
+        setTimeout(() => (button.innerText = "複製程式碼"), 2000);
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

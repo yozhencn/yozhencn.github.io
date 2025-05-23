@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人作品集</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">作品集</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#about">關於我</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">作品集</a></li>
+            <li class="nav-item"><a class="nav-link" href="models.html">模型</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">聯絡方式</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-3 text-center">
+    <img src="attached_assets/picture.jpg" class="profile-img" alt="我的頭像">
+  </div>
+
+  <main class="container mt-5">
+    <section id="about" class="section py-5">
+      <h1 class="section-title">關於我</h1>
+      <div class="about-card">
+        <div class="about-item">
+          <div class="about-icon">👤</div>
+          <div>
+            <h1 class="display-6 fw-bold">陳又溱</h1>
+          </div>
+        </div>
+
+        <div class="about-item">
+          <div class="about-icon">🎓</div>
+          <div>
+            <h3 class="about-subtitle">學歷</h3>
+            <ul class="about-list">
+              <li>國立臺灣科技大學 - 企業管理系（大三）</li>
+              <li>國立新竹高商 - 國際貿易科</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about-item">
+          <div class="about-icon">💼</div>
+          <div>
+            <h3 class="about-subtitle">專長</h3>
+            <ul class="about-list">
+              <li>文書處理能力</li>
+              <li>團隊合作</li>
+              <li>注重細節</li>
+              <li>耐心與毅力</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about-item">
+          <div class="about-icon">🔍</div>
+          <div>
+            <h3 class="about-subtitle">個性特質</h3>
+            <p class="about-text">負責任、勤奮、細心</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="projects" class="section py-5">
+      <h1 class="section-title">作品集</h1>
+      <hr class="my-5">
+      <h3 class="text-center mb-4 mt-4">人工智慧應用作品集區</h3> 
+      <div class="row justify-content-center">
+
+        <!-- 作品 1：OpenCV -->
+        <div class="col-md-4">
+          <div class="card mb-4 cute-card text-center">
+            <div class="card-body">
+              <h2 class="card-title mb-3" style="font-size: 1.75rem;">🤖 AI-opencv</h2>
+              <p class="card-text">
+                我的攝影機會「看東西」啦<br>
+                利用 OpenCV<br>
+                實現AI與現實世界的連結！
+              </p>
+              <a href="opencv-project.html" class="btn btn-teal mt-2">點我看詳細介紹</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-4 cute-card text-center">
+            <div class="card-body">
+              <h2 class="card-title mb-3" style="font-size: 1.75rem;">🤖AI 模型互動實驗室</h2>
+              <p class="card-text">
+                <strong>Teachable Machine</strong> &amp; <strong>Streamlit</strong> &amp; <strong>Local LLM</strong><br>
+                一鍵體驗模型訓練與智慧回應！
+              </p>
+              <a href="ai-lab.html" class="btn btn-teal mt-2">點我看詳細介紹</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="card mb-4 cute-card text-center">
+            <div class="card-body">
+              <h2 class="card-title mb-3" style="font-size: 1.75rem;">🤖 AI 視覺小幫手</h2>
+              <p class="card-text">
+                <strong>物件識別</strong> &amp; <strong>人物去背</strong> &amp; <strong>臉部關鍵點偵測</strong><br>
+                視覺任務輕鬆搞定！
+              </p>
+              <a href="vision-tools.html" class="btn btn-teal mt-2">點我看詳細介紹</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 cute-card text-center">
+            <div class="card-body">
+              <h2 class="card-title mb-3" style="font-size: 1.75rem;">🤖 AI 人體雷達</h2>
+              <p class="card-text">
+                <strong>臉部座標偵測</strong> &amp; <strong>人體骨架追蹤</strong><br>
+                不只能看得見五官，AI也能掌握你全身的動作喔！
+              </p>
+              <a href="pose-detect.html" class="btn btn-teal mt-2">點我看詳細介紹</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-4 cute-card text-center">
+            <div class="card-body">
+              <h2 class="card-title mb-3" style="font-size: 1.75rem;">🤖 AI手部雷達</h2>
+              <p class="card-text">
+                <strong>Hand Landmarker</strong> &amp; <strong>Gesture Recognition</strong><br>
+                電腦也能看懂手勢，還能用指尖在畫面中互動！
+              </p>
+              <a href="gesture.html" class="btn btn-teal mt-2">點我看詳細介紹</a>
+            </div>
+          </div>
+        </div>
+
+         <section class="section py-5">
+           <hr class="my-5">
+           <h3 class="text-center mb-4 mt-4">人工智慧應用期末專案－AI 與生活</h3>
+
+           <div class="card mb-5 p-4 cute-card shadow-lg">
+             <div class="row g-0 align-items-center">
+               <!-- 左側圖片 -->
+               <div class="col-md-5 text-center">
+                 <img src="attached_assets/drugs.png" alt="AI 模型展示圖" class="img-preview" style="max-width: 100%; height: auto;">
+               </div>
+
+               <!-- 右側內文置中 -->
+               <div class="col-md-7 d-flex align-items-center justify-content-center">
+                 <div class="card-body text-center">
+                   <h2 class="card-title mb-3" style="font-size: 2rem;">💊📸 AI與生活-藥品識別</h2>
+                   <p class="card-text">
+                    為長者用藥安全把關！<br>
+                    將鏡頭對準藥品，AI 幫你辨識名稱與簡單分類，<br>
+                    降低錯誤服藥風險，讓照護更安心
+                   </p>
+
+                   <a href="final project.html" class="btn btn-teal mt-2">點我看詳細介紹</a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </section>
+        <section class="section py-5">
+           <hr class="my-5">
+           <h3 class="text-center mb-4 mt-4">多元課程報告成果區</h3>
+
+          <div class="row justify-content-center">
+
+            <div class="row justify-content-center">
+
+              <!-- 第 1 排：卡片 1～3 -->
+              <div class="row justify-content-center">
+
+                <!-- 卡片 1：行銷溝通策略 -->
+                <div class="col-md-4">
+                  <div class="card mb-4 cute-card text-center border-start border-4" style="border-color: #b197fc;">
+                    <div class="card-body">
+                      <h2 class="card-title mb-3" style="font-size: 1.75rem;">行銷溝通策略</h2>
+                      <p class="card-text">
+                        與樂齡長者共同學習，設計<br>
+                        專屬於他們的電子雜誌《For My Best Partner》
+                      </p>
+                      <a href="https://yochan0412.github.io/ForMyFriend/" target="_blank" class="btn btn-light-purple mt-2">點我看電子雜誌</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 卡片 2：行銷資料科學 -->
+                <div class="col-md-4">
+                  <div class="card mb-4 cute-card text-center border-start border-4" style="border-color: #b197fc;">
+                    <div class="card-body">
+                      <h2 class="card-title mb-3" style="font-size: 1.75rem;">行銷資料科學</h2>
+                      <p class="card-text">
+                        分析紅酒的品質與化學特徵，<br>
+                        利用 Python 工具進行資料清洗與視覺化，<br>
+                        探索影響紅酒等級的重要變數。
+                      </p>
+                      <a href="pdf/MDS.pdf" target="_blank" class="btn btn-light-purple mt-2">點我看報告</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 卡片 3：人力資源管理 -->
+                <div class="col-md-4">
+                  <div class="card mb-4 cute-card text-center border-start border-4" style="border-color: #b197fc;">
+                    <div class="card-body">
+                      <h2 class="card-title mb-3" style="font-size: 1.75rem;">	創新與創業實務</h2>
+                      <p class="card-text">
+                        從市場調查、產品構想到營運計畫，<br>
+                        團隊打造智慧家電系統整合平台，<br>
+                        發展出完整且具規模的創業企劃書。
+                      </p>
+                      <a href="pdf/Smart appliances.pdf" target="_blank" class="btn btn-light-purple mt-2">點我看報告</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- 第 2 排：卡片 4～6 -->
+              <div class="row justify-content-center">
+
+                <!-- 卡片 4：行銷管理 -->
+                <div class="col-md-4">
+                  <div class="card mb-4 cute-card text-center border-start border-4" style="border-color: #b197fc;">
+                    <div class="card-body">
+                      <h2 class="card-title mb-3" style="font-size: 1.75rem;">行銷管理</h2>
+                      <p class="card-text">
+                        以 LATIV 為品牌對象，<br>
+                        結合 STP 與顧客洞察進行分析，<br>
+                        重新塑造品牌理念與行銷溝通活動。
+                      </p>
+                      <a href="pdf/Lativ.pdf" target="_blank" class="btn btn-light-purple mt-2">點我看報告</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 卡片 5：服務業行銷 -->
+                <div class="col-md-4">
+                  <div class="card mb-4 cute-card text-center border-start border-4" style="border-color: #b197fc;">
+                    <div class="card-body">
+                      <h2 class="card-title mb-3" style="font-size: 1.75rem;">服務業行銷</h2>
+                      <p class="card-text">
+                        以「皇冠海岸觀光商圈」為主題，<br>
+                        進行市場分析與7P評估，<br>
+                        規劃具創意與效益的商圈行銷企劃案。
+                      </p>
+                      <a href="pdf/marketing.pdf" target="_blank" class="btn btn-light-purple mt-2">點我看報告</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 卡片 6：經濟學 -->
+                <div class="col-md-4">
+                  <div class="card mb-4 cute-card text-center border-start border-4" style="border-color: #b197fc;">
+                    <div class="card-body">
+                      <h2 class="card-title mb-3" style="font-size: 1.75rem;">經濟學</h2>
+                      <p class="card-text">
+                        探討巴基斯坦洪災紓困方案，<br>
+                        從國情出發，設計災後重建資源配置、<br>
+                        經費使用與時程執行計畫。
+                      </p>
+                      <a href="pdf/Economics.pdf" target="_blank" class="btn btn-light-purple mt-2">點我看報告</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+    <section id="contact" class="section py-5">
+      <h2>聯絡方式</h2>
+      <p>
+        電話: 0966634661<br>
+        班級: 四企管三<br>
+        E-mail: B11108032@mail.ntust.edu.tw; youzhenchen0801@gmail.com
+      </p>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 陳又溱</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

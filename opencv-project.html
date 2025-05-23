@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>作品 1：OpenCV 專案實作</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #4ecdc4;
+      margin: 10px auto 0;
+    }
+
+    .img-preview {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+
+    details {
+      position: relative;
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+
+    details summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
+    details pre {
+      margin: 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 0.875rem;
+      padding: 0.4rem 0.75rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #81C0C0;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .copy-btn:hover {
+      background-color: #6ba7a7;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-light py-4 border-bottom">
+    <div class="container text-center">
+      <h1 class="display-5 fw-bold">OpenCV AI 實作展示</h1>
+      <p class="lead text-muted">結合 Python 與電腦視覺，打造互動式攝影機應用</p>
+    </div>
+  </header>
+
+  <main class="container mt-5">
+
+    <!-- 📹 第一區塊：Video -->
+    <section class="mb-5">
+      <h2 class="section-title">📹 Video</h2>
+      <p class="text-center">實際操作畫面截圖</p>
+      <div class="text-center mb-3">
+        <img src="attached_assets/camera.png" alt="video camera preview" class="img-preview">
+      </div>
+      <p class="text-center">
+        本段示範如何使用 OpenCV 開啟筆電攝影機並即時顯示畫面。這是學習 OpenCV 的入門範例，
+        能幫助你快速熟悉影像擷取與處理的流程，並為更進階的 AI 功能打下基礎。
+      </p>
+    </section>
+
+    <!-- 🚗 第二區塊：VideoCapture -->
+    <section class="mb-5">
+      <h2 class="section-title">🚗 VideoCapture</h2>
+      <p class="text-center">實際操作畫面截圖</p>
+      <div class="text-center mb-3">
+        <img src="attached_assets/car.png" alt="highway video preview" class="img-preview">
+      </div>
+      <p class="text-center">
+        這段程式碼展示如何串流並顯示台灣高速公路即時攝影機的影像，適用於智慧交通分析與即時監控。
+        結合 OpenCV 的串流能力，能讓你的專案實現公共監控或交通分析的初步應用。
+      </p>
+    </section>
+
+    <!-- 💻 程式碼區 -->
+    <section class="mb-5">
+      <h2 class="section-title">💻 程式碼展示</h2>
+
+      <!-- Video 程式碼 -->
+      <details>
+        <summary>▶️ Video：啟用攝影機並顯示畫面</summary>
+        <button class="copy-btn" onclick="copyCode(this)">複製程式碼</button>
+        <pre><code>
+import cv2
+
+cap = cv2.VideoCapture(0)
+while cap.isOpened():
+    success, image = cap.read()
+    cv2.imshow('B11108032_AI012', image)
+    if cv2.waitKey(1) & 0xFF == 27:
+       break
+cap.release()
+cv2.destroyAllWindows()
+        </code></pre>
+      </details>
+
+      <!-- VideoCapture 程式碼 -->
+      <details>
+        <summary>▶️ VideoCapture：串流高速公路即時影像</summary>
+        <button class="copy-btn" onclick="copyCode(this)">複製程式碼</button>
+        <pre><code>
+import cv2
+# cap = cv2.VideoCapture("video/RICH3.mp4")
+# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=13380")
+while cap.isOpened():
+    success, frame = cap.read()
+    cv2.imshow("B11108032_AI021", frame)
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+cap.release()
+cv2.destroyAllWindows()
+        </code></pre>
+      </details>
+    </section>
+
+    <!-- 🔙 返回按鈕 -->
+    <div class="text-center mb-5">
+      <a href="index.html#projects" class="btn btn-teal me-2">← 返回作品集</a>
+      <a href="index.html" class="btn btn-teal">← 返回首頁</a>
+
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 陳又溱 - OpenCV 作品展示</p>
+  </footer>
+
+  <!-- 複製按鈕功能 -->
+  <script>
+    function copyCode(button) {
+      const code = button.nextElementSibling.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        button.innerText = "✅ 已複製";
+        setTimeout(() => (button.innerText = "複製程式碼"), 2000);
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI 模型互動實驗室</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    body { font-weight: 500; }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #4ecdc4;
+      margin: 10px auto 0;
+    }
+    .img-preview {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    details {
+      position: relative;
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+    details summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+    details pre {
+      margin: 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 0.875rem;
+      padding: 0.4rem 0.75rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #81C0C0;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .copy-btn:hover {
+      background-color: #6ba7a7;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-light py-4 border-bottom">
+    <div class="container text-center">
+      <h1 class="display-5 fw-bold">AI 模型互動實驗室</h1>
+      <p class="lead text-muted">整合 Teachable Machine、Streamlit 與 Local LLM 的智慧應用平台</p>
+    </div>
+  </header>
+
+  <main class="container mt-5">
+    <section class="mb-5">
+      <h2 class="section-title">📸 Teachable Machine 模型展示</h2>
+      <p class="text-center">透過瀏覽器就能訓練影像分類模型，並即時應用於鏡頭辨識。</p>
+      <div class="text-center mb-4 d-flex justify-content-center gap-4 flex-wrap">
+        <div style="width: 45%;">
+          <img src="attached_assets/teachable.png" alt="Teachable 示意" class="img-preview">
+          <p class="mt-2">👉 訓練後的模型可直接應用於實體辨識，簡單直覺。</p>
+        </div>
+        <div style="width: 45%;">
+          <img src="attached_assets/watch.png" alt="辨識手錶" class="img-preview">
+          
+        </div>
+      </div>
+      
+      <div class="text-center mt-3">
+        <a href="models.html" class="btn btn-teal">我也想試試</a>
+      </div>
+
+
+      </div>
+      </section>
+      <details>
+        <summary>▶️ Teachable Machine 程式碼展示</summary>
+        <button class="copy-btn" onclick="copyCode(this)">複製程式碼</button>
+        <pre><code>import tensorflow as tf
+import cv2
+import numpy as np
+
+model = tf.keras.models.load_model('models/keras_model.h5', compile=False)
+data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+
+cap = cv2.VideoCapture(0)
+while cap.isOpened():
+    success, image = cap.read()
+    img = cv2.resize(image , (224, 224))
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    image = cv2.flip(image, 1)
+    image_array = np.asarray(img)
+    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+    data[0] = normalized_image_array
+    prediction = model.predict(data)
+    a,b,c,d = prediction[0]
+    if a>0.5:
+        print('phone')
+        cv2.putText(image, 'phone', (30, 120), 1, 3, (255,0,255), 10, 1)
+    if b>0.5:
+        print('drink')
+        cv2.putText(image, 'drink', (130, 120), 1, 3, (255,0,0), 10, 1)
+    if c>0.5:
+        print('watch')
+        cv2.putText(image, 'watch', (230, 120), 1, 3, (0,0,255), 10, 1)
+    cv2.imshow('B11108032_gesture3', image)
+    if cv2.waitKey(500) & 0xFF == 27:
+        break
+cap.release()</code></pre>
+      </details>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="section-title">🖥️ Streamlit 展示平台</h2>
+      <p class="text-center">利用 Streamlit 快速建立模型操作介面，讓使用者與 AI 即時互動。</p>
+      <div class="text-center mb-4">
+        <img src="attached_assets/streamlit.png" alt="Streamlit UI 示意圖" class="img-preview">
+        <p>🎯 使用者可輸入內容、上傳圖片或選擇選項，即可觸發模型推論。</p>
+      </div>
+      <details>
+        <summary>▶️ Streamlit YouTube 物件辨識程式碼</summary>
+        <button class="copy-btn" onclick="copyCode(this)">複製程式碼</button>
+        <pre><code>base_options = mp.tasks.BaseOptions('models/efficientdet_lite0.tflite')
+options = mp.tasks.vision.ObjectDetectorOptions(base_options, score_threshold=0.2)
+detector = mp.tasks.vision.ObjectDetector.create_from_options(options)
+
+video_url = "https://www.youtube.com/watch?v=UCG1aXVO8H8"
+ydl_opts = {'format': 'best',  'quiet': True }
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    info_dict = ydl.extract_info(video_url, download=False)
+stream_url = info_dict['url']
+
+cap = cv2.VideoCapture(stream_url)
+
+st.title('Streamlit + CV2')
+run = st.checkbox('Run')
+FRAME_WINDOW = st.image([])
+
+while run:
+    success, image = cap.read()
+    image = cv2.resize(image, (600, 360))
+    image_mp = mp.Image(mp.ImageFormat.SRGB, image)
+    detection_result = detector.detect(image_mp)
+    for detection in detection_result.detections:
+        bbox = detection.bounding_box
+        cv2.rectangle(image, (bbox.origin_x, bbox.origin_y),
+                      (bbox.origin_x + bbox.width, bbox.origin_y + bbox.height), (100, 200, 0), 1)
+        category = detection.categories[0]
+        result_text = category.category_name + ' (' + str(round(category.score, 2)) + ')'
+        cv2.putText(image, result_text, (10 + bbox.origin_x, 20 + bbox.origin_y),
+                    1, 1, (255, 255, 255), 1)
+    FRAME_WINDOW.image(image, channels='BGR')
+cap.release()</code></pre>
+      </details>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="section-title">🧠 Local LLM 在地大腦</h2>
+      <p class="text-center">不需連網即可執行語言模型，支援語音、文字與圖像理解。</p>
+
+      <div class="text-center mb-4">
+        <img src="attached_assets/voice.png" alt="文字與語音處理" class="img-preview">
+        <p>🗣️ 可將語音轉為文字，並用本地 LLM 回覆你的問題。</p>
+      </div>
+      <details>
+        <summary>▶️ Local LLM 語音轉文字 + 回覆 TTS</summary>
+        <button class="copy-btn" onclick="copyCode(this)">複製程式碼</button>
+        <pre><code># streamlit run AI11_llm2.py
+import streamlit as st
+import ollama
+from gtts.lang import tts_langs
+from gtts import gTTS
+import base64
+from tempfile import NamedTemporaryFile
+
+langs = tts_langs().keys()
+st.title("Gemma3 文字語音LLM TTS應用範例")
+lang = st.selectbox("Please choose the language", options=langs, index=12)
+user_input = st.text_area("詢問任何問題：", "")
+
+if st.button("send"):
+    if user_input:
+        st.markdown("<span style='color:red;'>請稍待片刻，gemma3:1b思考中...</span>", unsafe_allow_html=True)
+        response = ollama.chat(model='gemma3:1b', messages=[{'role': 'user', 'content': user_input}])
+        st.write(response['message']['content'])
+        tts = gTTS(response['message']['content'], lang=lang, slow=False, lang_check=True)
+        with NamedTemporaryFile(suffix=".mp3", delete=False) as temp:
+            tts.save(temp.name)
+            with open(temp.name, "rb") as f:
+                data = f.read()
+                b64 = base64.b64encode(data).decode()
+                md = f"""<audio controls autoplay="true">
+                     <source src="data:audio/mp3;base64,{b64}" type = "audio/mp3">
+                     your browser does not support the audio element. </audio>"""
+                st.markdown(md, unsafe_allow_html=True)
+    else:
+        st.warning("PLease type in your question!")</code></pre>
+      </details>
+
+      <div class="text-center mb-4 mt-5">
+        <img src="attached_assets/park.png" alt="圖片說明功能" class="img-preview">
+        <p>📷 本地模型也能理解圖片內容並進行說明或回答。</p>
+      </div>
+      <details>
+        <summary>▶️ Local LLM 圖片輔助理解（多模態）</summary>
+        <button class="copy-btn" onclick="copyCode(this)">複製程式碼</button>
+        <pre><code>import streamlit as st
+import ollama
+import random
+
+st.title("Gemma3 多模態 LLM 應用範例")
+colors = ['red', 'blue', 'green', 'orange', 'purple']
+user_input = st.text_input("詢問任何問題：", "")
+uploaded_image = st.file_uploader("可同時上傳圖片（jpg/png）", type=["jpg", "jpeg", "png"])
+
+if st.button("send"):
+    if user_input or uploaded_image:
+        st.markdown(f"<span style='color:{random.choice(colors)};'>請稍待片刻，思考中，馬上回答...</span>", unsafe_allow_html=True)
+        messages = []
+        if uploaded_image:
+            st.image(uploaded_image, caption="上傳的圖片如上，請等待判讀結果...", use_container_width=True)
+            image_bytes = uploaded_image.getvalue()
+            messages.append({'role': 'user', 'content': user_input, 'images': [image_bytes]})
+        else:
+            messages.append({'role': 'user', 'content': user_input})
+        response = ollama.chat(model='gemma3:4b', messages=messages)
+        st.write(response['message']['content'])
+    else:
+        st.warning("請輸入prompt或上傳圖片！")</code></pre>
+      </details>
+    </section>
+
+    <div class="text-center mb-5">
+      <a href="index.html#projects" class="btn btn-teal me-2">← 返回作品集</a>
+      <a href="index.html" class="btn btn-teal">← 返回首頁</a>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 陳又溱 - AI 模型應用展示</p>
+  </footer>
+
+  <script>
+    function copyCode(button) {
+      const code = button.nextElementSibling.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        button.innerText = "✅ 已複製";
+        setTimeout(() => (button.innerText = "複製程式碼"), 2000);
+      });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
